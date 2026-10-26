@@ -4,7 +4,7 @@
 | :--- | :--- | :--- |
 | **Tomás Bettera** | 45.938.735 | [tomasbettera10@gmail.com](mailto:tomasbettera10@gmail.com) |
 | **Aldo Maximiliano Martinez** | 46.174.656 | [maximiliano10439@gmail.com](mailto:maximiliano10439@gmail.com) |
-| **Nombre Apellido** | XX.XXX.XXX | @ |
+| **Ignacio Talio Liseno** | 46.397.648 | [ignacioliseno@gmail.com](mailto:ignacioliseno@gmail.com) |
 | **Nombre Apellido** | XX.XXX.XXX | @ |
 
 ## Justificación del Trabajo
