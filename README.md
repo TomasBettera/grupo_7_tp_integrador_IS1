@@ -3,7 +3,7 @@
 | Nombre y Apellido | DNI | Correo Electrónico |
 | :--- | :--- | :--- |
 | **Tomás Bettera** | 45.938.735 | [tomasbettera10@gmail.com](mailto:tomasbettera10@gmail.com) |
-| **Nombre Apellido** | XX.XXX.XXX | @ |
+| **Aldo Maximiliano Martinez** | 46.174.656 | [maximiliano10439@gmail.com](mailto:maximiliano10439@gmail.com) |
 | **Nombre Apellido** | XX.XXX.XXX | @ |
 | **Nombre Apellido** | XX.XXX.XXX | @ |
 
