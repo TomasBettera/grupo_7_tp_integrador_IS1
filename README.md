@@ -1,4 +1,4 @@
-# grupo_7_tp_integrador_ISI_1
+# grupo_7_tp_integrador_IS1
 ## Integrantes
 | Nombre y Apellido | DNI | Correo Electrónico |
 | :--- | :--- | :--- |
