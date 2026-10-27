@@ -8,12 +8,8 @@
 | **Joaquín Mateo Dutto** | 46.660.718 | joaquinduttoo@gmail.com|
 
 ## Justificación del Trabajo
-### 1. Abstracción de Autoría y Polimorfismo
+### Patrón Strategy
 
 ---
 
-### 2. Patrón Strategy
-
----
-
-### 3. Patrón Factory Method
+### Patrón Factory Method
