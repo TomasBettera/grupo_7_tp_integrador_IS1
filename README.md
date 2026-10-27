@@ -10,11 +10,11 @@
 ## Justificación del Trabajo
 ### Patrón Strategy
 
-Se utilizó Strategy porque permite tratar a cada modelo de IA como una opción intercambiable que cumplen lo siguiente: recibir un prompt y devolver una respuesta. Si se quiere agregar una opción mas simplemente se crea otra clase de esa IA.
+  Se utilizó Strategy porque permite tratar a cada modelo de IA como una opción intercambiable que cumplen lo siguiente: recibir un prompt y devolver una   respuesta. Si se quiere agregar una opción mas simplemente se crea otra clase de esa IA.
 ---
 
 ### Patrón Factory Method
-Se utilizó Factory Method porque no se necesita construir familias de objetos distintos que deban combinarse entre ellos, solo se fabrica una sola entidad que es un Autor.
+  Se utilizó Factory Method porque no se necesita construir familias de objetos distintos que deban combinarse entre ellos, solo se fabrica una sola entidad que es un Autor.
 ---
 
 
