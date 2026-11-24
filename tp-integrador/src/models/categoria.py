@@ -1,4 +1,4 @@
-from app.extensions import db
+from src.extensions import db
 
 
 class Categoria(db.Model):

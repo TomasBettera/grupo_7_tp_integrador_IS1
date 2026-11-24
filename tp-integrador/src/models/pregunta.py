@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from app.extensions import db
+from src.extensions import db
 
 pregunta_tag = db.Table(
     "pregunta_tag",

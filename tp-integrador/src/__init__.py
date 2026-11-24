@@ -1,5 +1,5 @@
 from flask import Flask
-from app.extensions import db
+from src.extensions import db
 
 
 def create_app():
@@ -7,6 +7,5 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
     db.init_app(app)
 
-    from app import models  # noqa: registra los modelos en SQLAlchemy
-
+    from src import models  
     return app
