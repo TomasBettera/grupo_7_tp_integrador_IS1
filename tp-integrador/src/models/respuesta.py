@@ -14,7 +14,9 @@ class Respuesta(db.Model):
     aceptada = db.Column(db.Boolean, default=False, nullable=False)
 
     pregunta_id = db.Column(db.ForeignKey("preguntas.id"), nullable=False)
-    autor_id = db.Column(db.ForeignKey("autores.id"), nullable=False)
+    autor_id = db.Column(
+        db.String, db.ForeignKey("autores.id"), nullable=False
+    )
 
     pregunta = db.relationship("Pregunta", back_populates="respuestas")
     autor = db.relationship("Autor")
