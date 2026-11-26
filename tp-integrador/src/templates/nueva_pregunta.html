@@ -10,7 +10,40 @@
             {% endfor %}
         </select>
     </label>
+    <div class="grid">
+        <label>Estrategia / Proveedor IA
+            <select name="estrategia" id="estrategia-select" onchange="actualizarModelos()">
+                <option value="local">Local</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="openai">OpenAI</option>
+            </select>
+        </label>
+        <label>Modelo
+            <select name="modelo" id="modelo-select"></select>
+        </label>
+    </div>
     <label>Detalle <textarea name="cuerpo" rows="4" required></textarea></label>
     <button type="submit">Publicar pregunta</button>
 </form>
+
+<script>
+const MODELOS_POR_ESTRATEGIA = {
+    local: ["llama3", "mistral", "gemma2"],
+    gemini: ["gemini-3.8-flash", "gemini-3.8-pro"],
+    openai: ["gpt-4o", "gpt-4o-mini"]
+};
+
+function actualizarModelos() {
+    const estrategia = document.getElementById("estrategia-select").value;
+    const modeloSelect = document.getElementById("modelo-select");
+    modeloSelect.innerHTML = "";
+    MODELOS_POR_ESTRATEGIA[estrategia].forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        modeloSelect.appendChild(opt);
+    });
+}
+actualizarModelos();
+</script>
 {% endblock %}

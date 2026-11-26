@@ -3,18 +3,61 @@
 <article>
     <header><h2>{{ pregunta.titulo }}</h2></header>
     <p>{{ pregunta.cuerpo }}</p>
+    <footer>
+        <form method="post" action="{{ url_for('web.generar_ia_en_pregunta', pregunta_id=pregunta.id) }}" class="grid" style="margin:0;">
+            <select name="estrategia" id="estrategia-select" onchange="actualizarModelos()" style="margin:0;">
+                <option value="local">Local</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="openai">OpenAI</option>
+            </select>
+            <select name="modelo" id="modelo-select" style="margin:0;"></select>
+            <button type="submit" class="secondary" style="margin:0;">Generar respuesta con IA</button>
+        </form>
+    </footer>
 </article>
 
 <h3>Respuestas ({{ pregunta.respuestas|length }})</h3>
 {% for r in pregunta.respuestas %}
     <article>
+        <header>
+            <small>Autor: {{ r.autor.nombre if r.autor else 'Anónimo' }}</small>
+        </header>
         <p>{{ r.cuerpo }}</p>
-        {% if r.aceptada %}<mark>Respuesta aceptada</mark>{% endif %}
+        <footer>
+            {% if r.aceptada %}
+                <mark>Respuesta aceptada</mark>
+            {% else %}
+                <form method="post" action="{{ url_for('web.aceptar_respuesta', pregunta_id=pregunta.id, respuesta_id=r.id) }}" style="margin:0;">
+                    <button type="submit" class="secondary outline">Marcar como aceptada</button>
+                </form>
+            {% endif %}
+        </footer>
     </article>
 {% endfor %}
 
 <form method="post">
-    <label>Agregar respuesta <textarea name="cuerpo" rows="3" required></textarea></label>
+    <label>Agregar respuesta manual <textarea name="cuerpo" rows="3" required></textarea></label>
     <button type="submit">Responder</button>
 </form>
+
+<script>
+const MODELOS_POR_ESTRATEGIA = {
+    local: ["llama3", "mistral", "gemma2"],
+    gemini: ["gemini-3.8-flash", "gemini-3.8-pro"],
+    openai: ["gpt-4o", "gpt-4o-mini"]
+};
+
+function actualizarModelos() {
+    const estrategia = document.getElementById("estrategia-select").value;
+    const modeloSelect = document.getElementById("modelo-select");
+    modeloSelect.innerHTML = "";
+    MODELOS_POR_ESTRATEGIA[estrategia].forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        modeloSelect.appendChild(opt);
+    });
+}
+actualizarModelos();
+</script>
 {% endblock %}
