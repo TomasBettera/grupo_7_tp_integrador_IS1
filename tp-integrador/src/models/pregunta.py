@@ -19,9 +19,12 @@ class Pregunta(db.Model):
     )
 
     categoria_id = db.Column(db.ForeignKey("categorias.id"), nullable=False)
-    usuario_id = db.Column(db.ForeignKey("autores.id"), nullable=False)
+    autor_id = db.Column(db.ForeignKey("autores.id"), nullable=False)
+
+    usuario_id = db.synonym("autor_id")
 
     categoria = db.relationship("Categoria", back_populates="preguntas")
+    autor = db.relationship("Autor")
     tags = db.relationship(
         "Tag", secondary=pregunta_tag, back_populates="preguntas"
     )
@@ -44,7 +47,6 @@ class Pregunta(db.Model):
         return datetime.utcnow() - self.fecha_publicacion
 
     def supero_tiempo_limite(self, limite):
-        """limite: datetime.timedelta"""
         return self.tiempo_transcurrido() > limite
 
     def tiene_etiqueta(self, nombre):
