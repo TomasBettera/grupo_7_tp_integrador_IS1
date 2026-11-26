@@ -17,13 +17,43 @@ grupo_7_tp_integrador_IS1/
     ├── run.py                  # Arranque de la aplicación
     ├── requirements.txt        # Dependencias
     ├── tests/                  # Pruebas automáticas (pytest)
+    │   ├── conftest.py
+    │   ├── test_agente_ia_y_fabrica.py
+    │   ├── test_dominio_adicional.py
+    │   ├── test_generador_respuesta.py
+    │   ├── test_monitor_preguntas.py
+    │   ├── test_rutas_web.py
+    │   └── test_usuario_y_fabrica.py
     └── src/
         ├── __init__.py         # create_app()
         ├── extensions.py       # db = SQLAlchemy()
         ├── models/             # Clases que se guardan en la base de datos
+        │   ├── __init__.py
+        │   ├── agente_ia.py
+        │   ├── autor.py
+        │   ├── categoria.py
+        │   ├── pregunta.py
+        │   ├── respuesta.py
+        │   ├── tag.py
+        │   └── usuario.py
         ├── estrategia/         # Patrón Strategy (modelos de IA)
-        ├── fabricas/          # Patrón Factory Method (autores)
-        └── services/           # Generador de respuestas y monitor
+        │   ├── __init__.py
+        │   ├── estrategia_gemini.py
+        │   ├── estrategia_llm.py
+        │   ├── estrategia_local.py
+        │   └── estrategia_openai.py
+        ├── fabricas/           # Patrón Factory Method (autores)
+        │   ├── fabrica_agente_ia.py
+        │   ├── fabrica_autor.py
+        │   └── fabrica_usuario.py
+        ├── services/           # Generador de respuestas y monitor
+        │   ├── generador_respuesta.py
+        │   └── monitor_preguntas.py
+        └── templates/          # Vistas HTML
+            ├── base.html
+            ├── detalle_pregunta.html
+            ├── index.html
+            └── nueva_pregunta.html
 ```
 
     
