@@ -19,7 +19,9 @@ class Pregunta(db.Model):
     )
 
     categoria_id = db.Column(db.ForeignKey("categorias.id"), nullable=False)
-    usuario_id = db.Column(db.ForeignKey("autores.id"), nullable=False)
+    usuario_id = db.Column(
+        db.String, db.ForeignKey("autores.id"), nullable=False
+    )
 
     categoria = db.relationship("Categoria", back_populates="preguntas")
     tags = db.relationship(
