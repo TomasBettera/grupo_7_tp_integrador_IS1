@@ -62,7 +62,8 @@ python run.py
 Se utilizó Strategy porque cada modelo de IA (OpenAI, Gemini y local) cumple el mismo contrato: recibe un prompt y devuelve una respuesta. Esto permite tratarlos como opciones intercambiables, sin modificar el resto del sistema. Para agregar una opción nueva, simplemente se crea otra clase que implemente `EstrategiaLLM`.
  
 ### Patrón Factory Method
- 
+
 Se utilizó Factory Method porque no se necesita construir familias de objetos distintos que deban combinarse entre ellos: solo se fabrica una única entidad, el `Autor`. Cada fábrica concreta (`FabricaUsuario` y `FabricaAgenteIA`) decide qué subclase crear, y así el resto del código trabaja con `Autor` sin depender de las clases concretas.
+
  ---
 
