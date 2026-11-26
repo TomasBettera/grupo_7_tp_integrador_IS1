@@ -22,7 +22,7 @@ grupo_7_tp_integrador_IS1/
         ├── extensions.py       # db = SQLAlchemy()
         ├── models/             # Clases que se guardan en la base de datos
         ├── estrategia/         # Patrón Strategy (modelos de IA)
-        ├── factories/          # Patrón Factory Method (autores)
+        ├── fabricas/          # Patrón Factory Method (autores)
         └── services/           # Generador de respuestas y monitor
 ```
 
