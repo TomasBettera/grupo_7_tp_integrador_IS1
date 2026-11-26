@@ -24,10 +24,10 @@ tp-integrador/
 
     
 ## Stack tecnológico utilizado
-Lenguaje: Python 3.15
-Backend: Flask
-Persistencia: Flask-SQLAlchemy con SQLite
-Dependencias: pip (requirements.txt)
+- **Lenguaje:** Python 3.15
+- **Backend:** Flask
+- **Persistencia:** Flask-SQLAlchemy con SQLite
+- **Dependencias:** pip (`requirements.txt`)
 
 ## Ejecución del Proyecto
  
