@@ -5,7 +5,7 @@ from src.models.autor import Autor
 class AgenteIA(Autor):
     __tablename__ = "agentes_ia"
 
-    id = db.Column(db.Integer, db.ForeignKey("autores.id"), primary_key=True)
+    id = db.Column(db.String(50), db.ForeignKey("autores.id"), primary_key=True)
     nombre = db.Column(db.String(100), nullable=False, default="Agente IA")
     activo = db.Column(db.Boolean, default=True, nullable=False)
 
