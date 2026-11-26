@@ -9,17 +9,21 @@
 
 ## Estructura del proyecto
 ```
-tp-integrador/
-├── run.py                  # Arranque de la aplicación
-├── requirements.txt        # Dependencias
+grupo_7_tp_integrador_IS1/
 ├── README.md
-└── src/
-    ├── __init__.py         # create_app()
-    ├── extensions.py       # db = SQLAlchemy()
-    ├── models/             # Clases que se guardan en la base de datos
-    ├── estrategia/         # Patrón Strategy (modelos de IA)
-    ├── factories/          # Patrón Factory Method (autores)
-    └── services/           # Generador de respuestas y monitor
+├── diagrama.pdf                # Diagrama de clases
+├── .gitignore
+└── tp-integrador/
+    ├── run.py                  # Arranque de la aplicación
+    ├── requirements.txt        # Dependencias
+    ├── tests/                  # Pruebas automáticas (pytest)
+    └── src/
+        ├── __init__.py         # create_app()
+        ├── extensions.py       # db = SQLAlchemy()
+        ├── models/             # Clases que se guardan en la base de datos
+        ├── estrategia/         # Patrón Strategy (modelos de IA)
+        ├── factories/          # Patrón Factory Method (autores)
+        └── services/           # Generador de respuestas y monitor
 ```
 
     
