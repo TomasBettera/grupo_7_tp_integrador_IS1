@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Hacer una pregunta</h2>
+<form method="post">
+    <label>Título <input type="text" name="titulo" required></label>
+    <label>Categoría
+        <select name="categoria_id" required>
+            {% for c in categorias %}
+                <option value="{{ c.id }}">{{ c.nombre }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Detalle <textarea name="cuerpo" rows="4" required></textarea></label>
+    <button type="submit">Publicar pregunta</button>
+</form>
+{% endblock %}
