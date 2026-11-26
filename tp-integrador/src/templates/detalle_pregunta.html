@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <article>
-    <header><h2>{{ pregunta.titulo }}</h2></header>
+    <header>
+        <h2>{{ pregunta.titulo }}</h2>
+        <small>
+            Por {{ pregunta.autor.obtener_nombre() if pregunta.autor else 'Anónimo' }}
+            {% if pregunta.fecha_publicacion %}
+                • Publicado el {{ pregunta.fecha_publicacion.strftime('%d/%m/%Y %H:%M') }}
+            {% endif %}
+        </small>
+    </header>
     <p>{{ pregunta.cuerpo }}</p>
     <footer>
         <form method="post" action="{{ url_for('web.generar_ia_en_pregunta', pregunta_id=pregunta.id) }}" class="grid" style="margin:0;">
@@ -20,7 +28,12 @@
 {% for r in pregunta.respuestas %}
     <article>
         <header>
-            <small>Autor: {{ r.autor.nombre if r.autor else 'Anónimo' }}</small>
+            <small>
+                Autor: {{ r.autor.obtener_nombre() if r.autor else 'Anónimo' }}
+                {% if r.fecha_publicacion %}
+                    • {{ r.fecha_publicacion.strftime('%d/%m/%Y %H:%M') }}
+                {% endif %}
+            </small>
         </header>
         <p>{{ r.cuerpo }}</p>
         <footer>

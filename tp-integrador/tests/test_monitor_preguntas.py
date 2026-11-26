@@ -17,11 +17,9 @@ def test_monitor_ejecutar_revision(session):
     session.add_all([cat, tag_ia, autor, bot])
     session.commit()
 
-    # Pregunta 1: Reciente sin tag -> NO debe activarse
     p1 = Pregunta(titulo="P1 Normal", cuerpo="Cuerpo 1", categoria=cat, autor=autor)
 
-    # Pregunta 2: Inactiva (antigua sin responder) -> DEBE activarse
-    hace_tres_dias = datetime.utcnow() - timedelta(days=3)
+    hace_tres_dias = datetime.now() - timedelta(days=3)
     p2 = Pregunta(
         titulo="P2 Inactiva",
         cuerpo="Cuerpo 2",
@@ -30,7 +28,6 @@ def test_monitor_ejecutar_revision(session):
         fecha_publicacion=hace_tres_dias,
     )
 
-    # Pregunta 3: Reciente pero con tag #ia-help -> DEBE activarse
     p3 = Pregunta(titulo="P3 Con Tag", cuerpo="Cuerpo 3", categoria=cat, autor=autor)
     p3.tags.append(tag_ia)
 
@@ -48,7 +45,6 @@ def test_monitor_ejecutar_revision(session):
 
     respuestas = monitor.ejecutar_revision(auto_commit=True)
 
-    # Deben haberse generado exactamente 2 respuestas (para p2 y p3)
     assert len(respuestas) == 2
     assert len(p1.respuestas) == 0
     assert len(p2.respuestas) == 1

@@ -33,8 +33,7 @@ def test_debe_activarse_por_tiempo_inactiva(session):
     session.add_all([cat, autor])
     session.commit()
 
-    # Pregunta publicada hace 48 horas sin respuestas
-    hace_dos_dias = datetime.utcnow() - timedelta(hours=48)
+    hace_dos_dias = datetime.now() - timedelta(hours=48)
     p = Pregunta(titulo="Duda SQL", cuerpo="Explicar JOIN", categoria=cat, autor=autor, fecha_publicacion=hace_dos_dias)
     session.add(p)
     session.commit()
@@ -49,7 +48,6 @@ def test_no_debe_activarse_si_no_supero_tiempo_y_no_tiene_tag(session):
     session.add_all([cat, autor])
     session.commit()
 
-    # Pregunta recién publicada sin tags de IA
     p = Pregunta(titulo="Duda TCP", cuerpo="Explicar Handshake", categoria=cat, autor=autor)
     session.add(p)
     session.commit()
@@ -69,7 +67,6 @@ def test_generar_para_con_diferentes_estrategias(session):
     session.add(p)
     session.commit()
 
-    # 1. Estrategia OpenAI
     generador_openai = GeneradorRespuestaAutomatica(estrategia=EstrategiaOpenAI(), agente=agente_bot)
     r1 = generador_openai.generar_para(p)
     session.add(r1)
@@ -81,7 +78,6 @@ def test_generar_para_con_diferentes_estrategias(session):
     assert r1.autor_id == agente_bot.id
     assert r1 in p.respuestas
 
-    # 2. Estrategia Gemini (intercambiable)
     generador_gemini = GeneradorRespuestaAutomatica(estrategia=EstrategiaGemini(), agente=agente_bot)
     r2 = generador_gemini.generar_para(p)
     session.add(r2)

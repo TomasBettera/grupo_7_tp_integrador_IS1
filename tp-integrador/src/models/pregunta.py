@@ -15,7 +15,7 @@ class Pregunta(db.Model):
     titulo = db.Column(db.String(200), nullable=False)
     cuerpo = db.Column(db.Text, nullable=False)
     fecha_publicacion = db.Column(
-        db.DateTime, default=datetime.utcnow, nullable=False
+        db.DateTime, default=datetime.now, nullable=False
     )
 
     categoria_id = db.Column(db.ForeignKey("categorias.id"), nullable=False)
@@ -44,7 +44,7 @@ class Pregunta(db.Model):
         return len(self.respuestas) == 0
 
     def tiempo_transcurrido(self):
-        return datetime.utcnow() - self.fecha_publicacion
+        return datetime.now() - self.fecha_publicacion
 
     def supero_tiempo_limite(self, limite):
         return self.tiempo_transcurrido() > limite
