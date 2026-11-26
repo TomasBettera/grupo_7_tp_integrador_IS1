@@ -1,32 +1,38 @@
-from abc import ABC, ABCMeta, abstractmethod
+from abc import abstractmethod
 from enum import Enum
-
+from uuid import uuid4
 from src.extensions import db
 
-
-class TUsuario(Enum):
+class TUsuario(str, Enum):
+    ADMIN = "Admin"
+    GENERAL = "General"
     Admin = "Admin"
     General = "General"
 
-
-class _ABCModelMeta(type(db.Model), ABCMeta):
-    pass
-
-
-class Autor(db.Model, ABC, metaclass=_ABCModelMeta):
+class Autor(db.Model):
     __tablename__ = "autores"
 
-    id = db.Column(db.String, primary_key=True)
+    id = db.Column(db.String(50), primary_key=True, default=lambda: uuid4().hex)
     tipo_autor = db.Column(db.String(50), nullable=False)
 
     __mapper_args__ = {
-        "polymorphic_on": tipo_autor,
         "polymorphic_identity": "autor",
+        "polymorphic_on": tipo_autor,
     }
 
-    @abstractmethod
-    def obtenerNombre(self) -> str:
-        raise NotImplementedError
+    def obtener_id(self) -> str:
+        return self.id
 
     def obtenerId(self) -> str:
         return self.id
+
+    @property
+    def tipo(self) -> str:
+        return self.tipo_autor
+
+    @abstractmethod
+    def obtener_nombre(self) -> str:
+        raise NotImplementedError
+
+    def obtenerNombre(self) -> str:
+        return self.obtener_nombre()

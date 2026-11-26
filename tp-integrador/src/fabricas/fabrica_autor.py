@@ -1,13 +1,10 @@
 from abc import ABC, abstractmethod
-
 from src.models.autor import Autor
 
-
 class FabricaAutor(ABC):
-
     @abstractmethod
-    def crear_autor(self, *args, **kwargs) -> Autor:
-        raise NotImplementedError
+    def crear_autor(self, **kwargs) -> Autor:
+        pass
 
-    def crearAutor(self, *args, **kwargs) -> Autor:
-        return self.crear_autor(*args, **kwargs)
+    def crearAutor(self, **kwargs) -> Autor:
+        return self.crear_autor(**kwargs)

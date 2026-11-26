@@ -11,7 +11,7 @@ class Usuario(Autor):
     __tablename__ = "usuarios"
 
     id = db.Column(
-        db.String, db.ForeignKey("autores.id"), primary_key=True
+        db.String(50), db.ForeignKey("autores.id"), primary_key=True
     )
     email = db.Column(db.String(255), nullable=False, unique=True)
     passwordHash = db.Column(db.String(255), nullable=False)
@@ -19,7 +19,7 @@ class Usuario(Autor):
 
     __mapper_args__ = {"polymorphic_identity": "usuario"}
 
-    def __init__(self, email: str, password: str, tipo: TUsuario):
+    def __init__(self, email: str, password: str, tipo: TUsuario, **kwargs):
         if not isinstance(email, str) or not email.strip():
             raise ValueError("El email es obligatorio")
         if not isinstance(password, str) or not password:
@@ -28,10 +28,11 @@ class Usuario(Autor):
             raise ValueError("El rol debe ser un valor de TUsuario")
 
         super().__init__(
-            id=uuid4().hex,
+            id=kwargs.get("id", uuid4().hex),
             email=email.strip().lower(),
             passwordHash=generate_password_hash(password),
             tipo=tipo,
+            **{k: v for k, v in kwargs.items() if k != "id"}
         )
 
     def registrarse(self) -> None:
@@ -47,5 +48,8 @@ class Usuario(Autor):
             return False
         return check_password_hash(self.passwordHash, password)
 
-    def obtenerNombre(self) -> str:
+    def obtener_nombre(self) -> str:
         return self.email
+
+    def obtenerNombre(self) -> str:
+        return self.obtener_nombre()
