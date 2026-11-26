@@ -76,7 +76,16 @@ cd grupo_7_tp_integrador_IS1
 2. Crear un entorno virtual y activarlo:
 ```bash
 python -m venv venv
+```
+- En Windows:
+```bash
 venv\Scripts\activate
+```
+
+- En Linux y macOS:
+
+```bash
+source venv/bin/activate
 ```
  
 3. Instalar las dependencias:
@@ -90,6 +99,12 @@ python run.py
 ```
 5. Abrir el servidor en el navegador:
  [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+## Ejecución de Tests
+Con el entorno virtual (venv) activado y desde la raíz del proyecto (tp-integrador), ejecutar:
+```bash
+python -m pytest
+```
 
 ## Justificación del Diagrama de Clases
  
