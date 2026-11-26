@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Preguntas recientes</h2>
+{% for p in preguntas %}
+    <article>
+        <header><a href="{{ url_for('web.detalle_pregunta', pregunta_id=p.id) }}"><strong>{{ p.titulo }}</strong></a></header>
+        <p>{{ p.cuerpo }}</p>
+        <footer>Respuestas: {{ p.respuestas|length }}</footer>
+    </article>
+{% else %}
+    <p>Todavía no hay preguntas cargadas.</p>
+{% endfor %}
+{% endblock %}

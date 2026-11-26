@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<article>
+    <header><h2>{{ pregunta.titulo }}</h2></header>
+    <p>{{ pregunta.cuerpo }}</p>
+</article>
+
+<h3>Respuestas ({{ pregunta.respuestas|length }})</h3>
+{% for r in pregunta.respuestas %}
+    <article>
+        <p>{{ r.cuerpo }}</p>
+        {% if r.aceptada %}<mark>Respuesta aceptada</mark>{% endif %}
+    </article>
+{% endfor %}
+
+<form method="post">
+    <label>Agregar respuesta <textarea name="cuerpo" rows="3" required></textarea></label>
+    <button type="submit">Responder</button>
+</form>
+{% endblock %}
