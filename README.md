@@ -58,7 +58,8 @@ python -m pip install -r requirements.txt
 ```bash
 python run.py
 ```
-5. Abrir el servidor en: http://127.0.0.1:5000
+5. Abrir el servidor en el navegador:
+ [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ## Justificación del Diagrama de Clases
  
